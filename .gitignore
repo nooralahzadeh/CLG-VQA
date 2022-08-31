@@ -5,7 +5,7 @@ __pycache__/
 
 # C extensions
 *.so
-.idea/ 
+.idea/
 # Distribution / packaging
 .Python
 build/
@@ -135,5 +135,4 @@ datasets/gqa/annotations/train_target.pkl
 datasets/gqa/annotations/train.json
 datasets/gqa/annotations/trainval_target.pkl
 datasets/wit/annotations/train_en.jsonl
-datasets
 fine-tuned-checkpoint/*
