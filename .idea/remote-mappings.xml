@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteMappingsManager">
+    <list>
+      <list>
+        <remote-mappings server-id="python@sftp://fnoora@glados.ifi.uzh.ch:22/home/user/fnoora/anaconda3/envs/volta/bin/python" />
+      </list>
+    </list>
+  </component>
+</project>

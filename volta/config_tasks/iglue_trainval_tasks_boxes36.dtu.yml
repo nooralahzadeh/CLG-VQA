@@ -1,0 +1,36 @@
+TASK15:
+  name: GQA
+  type: VL-classifier-GQA
+  num_labels: 1842
+  loss: CrossEntropyLoss
+  process: normal
+  task_id: 15
+  format: 'serialized_lmdb'
+  #format: 'lmdb'
+  dataroot: /home/user/fnoora/iglue/datasets/gqa/annotations
+#  features_h5path1: /srv/scratch1/fnoora/gqa/vg_gqa_imgfeat/volta/gqa-train_boxes36.lmdb
+  features_h5path1: /srv/scratch1/fnoora/iglue/gqa/features/gqa-train_boxes36.lmdb
+#  features_h5path2:  /srv/scratch1/fnoora/gqa/vg_gqa_imgfeat/volta/gqa-valid_boxes36.lmdb
+  features_h5path2: /srv/scratch1/fnoora/iglue/gqa/features/gqa-valid_boxes36.lmdb
+  train_annotations_jsonpath: ''
+  val_annotations_jsonpath: ''
+  max_seq_length: 40
+  max_region_num: 36
+  batch_size: 256
+  eval_batch_size: 1024
+  train_split: train
+  val_split: val
+  lr: 0.00004
+  num_epoch: 5
+  ratio: 1 # Sentence  replacement ratio
+  cross: 0.9 # Token replacement ratio
+  dictionary_path: /home/user/fnoora/iglue/datasets/dictionary/MUSE
+  word_attributes_path: None
+  objects_labels_path: None
+  object_attributes_path: None
+  number_of_negatives: 0 # contrastive: replace object in the text and create negative samples
+  code_mixing: False # do code-mixing
+  clip: False # compare the object labels and objects (CLIP)
+  prompt: False
+  semantic_dict_path: /home/user/fnoora/iglue/datasets/gqa/id2label/embedding_distance.pkl # for wordnet should be  /home/user/fnoora/iglue/datasets/gqa/id2label/l2l_semantic_index.pkl
+  semantic_lambda: 10

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="a8d2b347-55a7-4194-85f5-eb9d49d2a66f" name="glados.ifi.uzh.ch">
+        <fileTransfer rootFolder="/home/user/fnoora" accessType="SFTP" host="glados.ifi.uzh.ch" port="22" sshConfigId="11066106-7624-4d4c-9f77-fb52f74163e0" sshConfig="fnoora@glados.ifi.uzh.ch:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,19 @@
+TASK15:
+  name: GQA
+  type: VL-classifier-GQA
+  num_labels: 1842
+  loss: CrossEntropyLoss
+  process: normal
+  task_id: 15
+  format: 'lmdb'
+  dataroot: /home/user/fnoora/iglue/datasets/gqa/annotations
+  features_h5path1: /srv/scratch1/fnoora/iglue/gqa/features/vg-gqa_X101.lmdb
+  features_h5path2: ''
+  train_annotations_jsonpath: ''
+  val_annotations_jsonpath: ''
+  max_seq_length: 40
+  max_region_num: 100
+  batch_size: 256
+  eval_batch_size: 128
+  train_split: ''
+  val_split: test
