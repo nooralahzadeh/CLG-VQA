@@ -37,9 +37,7 @@ We provide the scripts we used to train and evaluate models in [`experiments/`](
 Task configuration files are stored in [config_tasks/](config_tasks).
 
 ### Training With prior:
-```bash
-  source train.dtu.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_directory_for_fine_tuned_model>
-```
+
 Set `code_mixing: False` in [config_tasks/](config_tasks) for
     `iglue_trainval_tasks_boxes.dtu.yml` and 
     `iglue_trainval_tasks_X101.dtu.yml`
@@ -58,6 +56,9 @@ Set `semantic_dict_path: ../embedding_distance.pkl` in [config_tasks/](config_ta
 
 Download the `embedding_distance.pkl` file from [semantic dict repository](https://pub.cl.uzh.ch/users/fnoora/semantic_dict/) 
 
+```bash
+source train.dtu.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_directory_for_fine_tuned_model>
+```
 ### Training With prior + CDM:
 Set `code_mixing: True` in [config_tasks/](config_tasks) for
     `iglue_trainval_tasks_boxes.dtu.yml` and
@@ -69,25 +70,26 @@ Set `code_mixing: False` in [config_tasks/](config_tasks) for
         `iglue_trainval_tasks_X101.dtu.yml`
  - Step_0: pruning 
 ```bash
-  source train.dtu.pruned.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_directory_for_pruned_model>
+source train.dtu.pruned.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_directory_for_pruned_model>
 ```
  - Step_1: fine-tuning 
 ```bash
- source train.dtu.sft.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_directory_of_pruned_model>
+source train.dtu.sft.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_directory_of_pruned_model>
 ```
 ### Training With prior + SFT + CDM:
 Set `code_mixing: True` in [config_tasks/](config_tasks) --> `iglue_trainval_tasks_boxes.dtu.yml` and  `iglue_trainval_tasks_X101.dtu.yml`
 - Step_0: pruning
 ```bash
-  source train.dtu.pruned.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_directory_for_pruned_model>
- ```
+source train.dtu.pruned.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_directory_for_pruned_model>
+```
 - Step_1: fine-tuning
 ```bash
-  source train.dtu.sft.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_directory_of_pruned_model> <path_to_directory_for_fine_tuned_model>
+source train.dtu.sft.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_directory_of_pruned_model> <path_to_directory_for_fine_tuned_model>
  ```
 
 ### Evaluation
 You can download the fine-tuned models from [model repository](https://pub.cl.uzh.ch/users/fnoora/fine-tuned-checkpoint/).
+
 ```bash 
 source test.dtu.sh  <path_to_directory_of_fine_tuned_model> <name_of_fine-tuned-model>
 ```
