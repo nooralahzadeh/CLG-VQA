@@ -135,4 +135,9 @@ datasets/gqa/annotations/train_target.pkl
 datasets/gqa/annotations/train.json
 datasets/gqa/annotations/trainval_target.pkl
 datasets/wit/annotations/train_en.jsonl
+datasets/gqa/id2label/l2l_semantic.pkl
+datasets/gqa/id2label/embedding_distance.pkl
+datasets/gqa/id2label/l2l_semantic_index.pkl
+
+
 fine-tuned-checkpoint/*

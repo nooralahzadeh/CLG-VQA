@@ -41,9 +41,14 @@ Run `source train.dtu.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_d
 
 Set `code_mixing: False` in [config_tasks/](config_tasks) --> `iglue_trainval_tasks_boxes.dtu.yml` and  `iglue_trainval_tasks_X101.dtu.yml`
 ##### WordNet
-Set `semantic_dict_path: ../l2l_semantic_index` in [config_tasks/](config_tasks) --> `iglue_trainval_tasks_boxes.dtu.yml` and  `iglue_trainval_tasks_X101.dtu.yml` 
+Set `semantic_dict_path: ../l2l_semantic_index.pkl` in [config_tasks/](config_tasks) --> `iglue_trainval_tasks_boxes.dtu.yml` and  `iglue_trainval_tasks_X101.dtu.yml` 
+
+Download the `l2l_semantic_index.pkl` file from [semantic dict repository](https://pub.cl.uzh.ch/users/fnoora/semantic_dict/) 
+
 #### Word Embeddings
 Set `semantic_dict_path: ../embedding_distance.pkl` in [config_tasks/](config_tasks) --> `iglue_trainval_tasks_boxes.dtu.yml` and  `iglue_trainval_tasks_X101.dtu.yml` 
+
+Download the `embedding_distance.pkl` file from [semantic dict repository](https://pub.cl.uzh.ch/users/fnoora/semantic_dict/) 
 
 ### Training With prior + CDM:
 Set `code_mixing: True` in [config_tasks/](config_tasks) --> `iglue_trainval_tasks_boxes.dtu.yml` and  `iglue_trainval_tasks_X101.dtu.yml`
