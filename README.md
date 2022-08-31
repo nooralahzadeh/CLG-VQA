@@ -37,7 +37,10 @@ We provide the scripts we used to train and evaluate models in [`experiments/`](
 Task configuration files are stored in [config_tasks/](config_tasks).
 
 ### Training With prior:
-Run `source train.dtu.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_directory_for_fine_tuned_model>`
+Run 
+```bash
+  source train.dtu.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_directory_for_fine_tuned_model>
+```
 
 Set `code_mixing: False` in [config_tasks/](config_tasks) --> `iglue_trainval_tasks_boxes.dtu.yml` and  `iglue_trainval_tasks_X101.dtu.yml`
 ##### WordNet
@@ -55,18 +58,32 @@ Set `code_mixing: True` in [config_tasks/](config_tasks) --> `iglue_trainval_tas
 
 ### Training With prior + SFT:
 Set `code_mixing: False` in [config_tasks/](config_tasks) --> `iglue_trainval_tasks_boxes.dtu.yml` and  `iglue_trainval_tasks_X101.dtu.yml`
- - Step_0: pruning: Run `source train.dtu.pruned.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_directory_for_pruned_model>`
- - Step_1: fine-tuning: Run `source train.dtu.sft.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_directory_of_pruned_model>`
-
+ - Step_0: pruning: Run 
+```bash
+  source train.dtu.pruned.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_directory_for_pruned_model>
+```
+ - Step_1: fine-tuning: Run 
+```bash
+ source train.dtu.sft.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_directory_of_pruned_model>
+```
 ### Training With prior + SFT + CDM:
 Set `code_mixing: True` in [config_tasks/](config_tasks) --> `iglue_trainval_tasks_boxes.dtu.yml` and  `iglue_trainval_tasks_X101.dtu.yml`
- - Step_0: pruning: Run ```bash source train.dtu.pruned.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_directory_for_pruned_model>```
- - Step_1: fine-tuning: Run `source train.dtu.sft.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_directory_of_pruned_model> <path_to_directory_for_fine_tuned_model>`
+- Step_0: pruning: Run 
+```bash
+  source train.dtu.pruned.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_directory_for_pruned_model>
+ ```
+- Step_1: fine-tuning: Run 
+```bash
+  source train.dtu.sft.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_directory_of_pruned_model> <path_to_directory_for_fine_tuned_model>
+ ```
 
 ### Evaluation
 You can download the fine-tuned models from [model repository](https://pub.cl.uzh.ch/users/fnoora/fine-tuned-checkpoint/).
 
-Run ```bash source test.dtu.sh  <path_to_directory_of_fine_tuned_model> <name_of_fine-tuned-model>```
+Run 
+```bash 
+source test.dtu.sh  <path_to_directory_of_fine_tuned_model> <name_of_fine-tuned-model>
+```
 
 The result of our best models can be found in [results](results).
 ## License
