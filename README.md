@@ -29,7 +29,7 @@ The checkpoints of both pretrained V&L models (i.e. UC2 and M3P ) can be downloa
 Model configuration files are stored in [`volta/config/`](volta/config). 
 
 
-## Training and Evaluation
+## Training
 
 We provide the scripts we used to train and evaluate models in [`experiments/`](experiments):
 - [`zero_shot/`](experiments/zero_shot): English fine-tuning and zero-shot/`translate test' evaluation
@@ -50,7 +50,7 @@ Set `semantic_dict_path: ../l2l_semantic_index.pkl` in [config_tasks/](config_ta
     `iglue_trainval_tasks_X101.dtu.yml`
 
 
-#### Word Embeddings
+##### Word Embeddings
 Download the `embedding_distance.pkl` file from [semantic dict repository](https://pub.cl.uzh.ch/users/fnoora/semantic_dict/) 
 
 Set `semantic_dict_path: ../embedding_distance.pkl` in [config_tasks/](config_tasks) for
@@ -79,16 +79,16 @@ source train.dtu.sft.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_di
 ```
 ### Training With prior + SFT + CDM:
 Set `code_mixing: True` in [config_tasks/](config_tasks) --> `iglue_trainval_tasks_boxes.dtu.yml` and  `iglue_trainval_tasks_X101.dtu.yml`
-- Step_0: pruning
+* Step_0: pruning
 ```bash
 source train.dtu.pruned.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_directory_for_pruned_model>
 ```
-- Step_1: fine-tuning
+* Step_1: fine-tuning
 ```bash
 source train.dtu.sft.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_directory_of_pruned_model> <path_to_directory_for_fine_tuned_model>
  ```
 
-### Evaluation
+## Evaluation
 You can download the fine-tuned models from [model repository](https://pub.cl.uzh.ch/users/fnoora/fine-tuned-checkpoint/).
 
 ```bash 
