@@ -2,7 +2,7 @@ TASK15:
   name: GQA
   type: VL-classifier-GQA
   num_labels: 1842
-  loss: BCEWithLogitLoss
+  loss: CrossEntropyLoss
   process: normal
   task_id: 15
   format: 'lmdb'

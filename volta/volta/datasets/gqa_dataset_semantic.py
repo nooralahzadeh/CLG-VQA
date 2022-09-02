@@ -1,5 +1,6 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 # Copyright (c) 2020, Emanuele Bugliarello (@e-bug).
+# Copyright (c) 2022, Farhad Nooralahzadeh (@nooralahzadeh).
 
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
@@ -265,7 +266,8 @@ class GQAClassificationLoader(object):
         batch_size=512,
         num_workers=25,
         cache=10000,
-        # ME
+        # New Arguments
+        semantic_dict_path=None,  # prior
         dict_path=None,  # Mix
         do_code_mixing=False,  # Mix
         ratio=None,  # Mix
@@ -290,22 +292,10 @@ class GQAClassificationLoader(object):
         self._norm_embeddings = norm_embeddings
 
 
-        # semantic_dict_path: /home/ubuntu/iglue/datasets/gqa/id2label , l2l_semantic_index.pkl,
-        # glados: /home/user/fnoora/iglue/datasets/gqa/id2label
         n_gpu = torch.cuda.device_count()
-        if n_gpu > 1:
-            semantic_dict_path = os.path.join("/srv/scratch1/fnoora/semantic",
-                                              "embedding_distance.pkl")
-            semantic_dict_path_wn = os.path.join("/home/user/fnoora/iglue/datasets/gqa/id2label",
-                                              "l2l_semantic_index.pkl")
-        else:
-            semantic_dict_path = os.path.join("/srv/scratch1/fnoora/semantic", "embedding_distance.pkl")
-            semantic_dict_path_wn = os.path.join("/home/user/fnoora/iglue/datasets/gqa/id2label",
-                                                 "l2l_semantic_index.pkl")
-            #semantic_dict_path = os.path.join("/home/ubuntu/iglue/datasets/gqa/id2label", "embedding_distance.pkl")
+
 
         self.semantic_dict = cPickle.load(open(semantic_dict_path, "rb"))
-        #self.semantic_dict_wn = cPickle.load(open(semantic_dict_path_wn, "rb"))
 
 
         lmdb_file = image_features_reader
@@ -374,9 +364,8 @@ class GQAClassificationLoader(object):
                 if j == t:
                     distance[i, j] = 0.0
                 else:
-                    #print(t, j, self.label2ans[t], self.label2ans[j],1-self.semantic_dict[(t,j)])
                     distance[i, j] = self.semantic_dict[(j, t)]
-            #distance[i,:]=distance[i,:]/np.sum(distance[i,:]) # normalizae
+
         return distance
 
     def get_embeddingdist_mix(self,targets):
@@ -387,10 +376,8 @@ class GQAClassificationLoader(object):
                 if j == t:
                     distance[i, j] = 0.0
                 else:
-                    #print(t, j, self.label2ans[t], self.label2ans[j],1-self.semantic_dict[(t,j)])
                     distance[i, j] = (self.semantic_dict[(j,t)]) * self.getDistance(j, t, self.semantic_dict_wn)
-                    #distance[i, j] = 1- self.semantic_dict[(j, t)]
-            #distance[i,:]=distance[i,:]/np.sum(distance[i,:]) # normalizae
+
         return distance
 
 
@@ -452,10 +439,7 @@ class GQAClassificationLoader(object):
             if labels is not None:
                 target.scatter_(1, labels, scores)
 
-            # ## check the semantic distance
-            # for elm in (semantic_distance > 0).nonzero(as_tuple=False):
-            #     elm=elm.tolist()
-            #     print(elm[0],elm[-1],self.label2ans[labels[elm[0]].tolist()[-1]],"|", self.label2ans[elm[-1]], semantic_distance[elm[0],elm[1]] )
+
 
             data = (
                 image_feats,

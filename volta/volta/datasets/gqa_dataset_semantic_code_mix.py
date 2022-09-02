@@ -1,5 +1,6 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 # Copyright (c) 2020, Emanuele Bugliarello (@e-bug).
+# Copyright (c) 2022, Farhad Nooralahzadeh (@nooralahzadeh).
 
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
@@ -265,7 +266,7 @@ class GQAClassificationLoader(object):
         batch_size=512,
         num_workers=25,
         cache=10000,
-        # ME
+        # New Arguments
         semantic_dict_path=None, # prior
         dict_path=None,  # Mix
         do_code_mixing=False,  # Mix
@@ -290,10 +291,7 @@ class GQAClassificationLoader(object):
         self._padding_index = padding_index
         self._norm_embeddings = norm_embeddings
 
-        # semantic_dict_path: /home/ubuntu/iglue/datasets/gqa/id2label , l2l_semantic_index.pkl,
-        # glados: /home/user/fnoora/iglue/datasets/gqa/id2label
-
-        #semantic_dict_path = os.path.join("/srv/scratch1/fnoora/semantic", "embedding_distance.pkl")
+        # Semantic dictionary
         self.semantic_dict = cPickle.load(open(semantic_dict_path, "rb"))
 
         lmdb_file = image_features_reader
@@ -304,7 +302,7 @@ class GQAClassificationLoader(object):
         if split == "train":
             ds = td.LocallyShuffleData(ds, cache)
 
-        # me : code-switching
+        #for code-switching
         wordDicts = self.load_worddict(dict_path)
         with open(word_attributes_path, "rb") as file_to_read:
             word_attributes = cPickle.load(file_to_read)
@@ -438,11 +436,6 @@ class GQAClassificationLoader(object):
             target = torch.zeros((batch_size, self.num_labels), dtype=torch.float)
             if labels is not None:
                 target.scatter_(1, labels, scores)
-
-            ## check the semantic distance
-            # for elm in (semantic_distance == 0.5).nonzero(as_tuple=False):
-            #     elm=elm.tolist()
-            #     print(elm[0],elm[-1],self.label2ans[labels[elm[0]].tolist()[-1]],"|", self.label2ans[elm[-1]], semantic_distance[elm[0],elm[1]] )
 
             data = (
                 image_feats,
@@ -625,17 +618,6 @@ class BertPreprocessBatch(object):
         question = entry["question"]
 
         if self.code_mix:
-            # try:
-            #     if self.word_attributes[str(question_id)]['TP']:
-            #          question = entry["question"].replace('?', ' ?')
-            #          # get IG attr from words.pkl
-            #          selected = [idx for idx, (word, attr) in enumerate(self.word_attributes[str(question_id)]["word_importance"].items()) if
-            #                  attr > 0]
-            #          question = self.cross_list(question,selected)
-            #          question = question.replace(' ?', '?')
-            # except:
-            #      question = self.cross_list(question)
-            #      question = question.replace(' ?', '?')replace
             question = self.cross_list(question)
             question = question.replace(' ?', '?')
 
@@ -647,7 +629,6 @@ class BertPreprocessBatch(object):
         tokens = self.tokenizer.encode(question)
         tokens = [tokens[0]] + tokens[1:-1][: self.seq_len - 2] + [tokens[-1]]
         answer = entry["answer"]
-        #semantic_dist=self.getDistance()
 
         cur_example = InputExample(
             image_feat=image_feature,
@@ -697,7 +678,6 @@ class BertPreprocessBatch(object):
             else:
                 mixed.append(xx)
         return " ".join(mixed)
-
         # return " ".join([self.do_code_mix(xx.lower(), (not self.ratio >= np.random.rand())) for idx, xx in enumerate(question.split())])
 
     def convert_example_to_features(self, example, max_seq_length, tokenizer, max_region_length):
