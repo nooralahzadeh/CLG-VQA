@@ -2,8 +2,8 @@
 This is the implementation of the approaches described in the paper:
 > Farhad Nooralahzadeh and Rico Sennrich [Improving the Cross-Lingual Generalisation in Visual Question Answering](https://arxiv.org/abs/). arXiv 2022; abs/.
 
-Our repository is based on [IGLUE](https://github.com/e-bug/iglue) and [VOLTA](https://github.com/e-bug/volta). We thank the authors for their wonderful open-source efforts.
-
+Our repository is based on [IGLUE](https://github.com/e-bug/iglue) and [VOLTA](https://github.com/e-bug/volta). We thank the authors for their wonderful open-source efforts.</br>
+For sparse fine-tuning (SFT), we adopt the codebase of [BERT-Tickets](https://github.com/VITA-Group/BERT-Tickets) for our purpose.</br>
 We provide the code for reproducing our results and fine-tuned models.
 
 
@@ -69,7 +69,7 @@ Set `code_mixing: True` in [config_tasks/](config_tasks) for
 Set `code_mixing: False` in [config_tasks/](config_tasks) for 
         `iglue_trainval_tasks_boxes.dtu.yml` and 
         `iglue_trainval_tasks_X101.dtu.yml`
- - Step_0: pruning 
+ - Step_0: pruning
 ```bash
 source train.dtu.pruned.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_directory_for_pruned_model>
 ```
@@ -101,6 +101,7 @@ The result of our best models can be found in [results](results).
 This work is licensed under the MIT license.
 Third-party software and data are subject to their respective licenses. <br>
 
+## Citation
 If you find this repository useful in your work, you can cite the following paper:
 
 ```

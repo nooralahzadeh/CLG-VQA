@@ -186,35 +186,10 @@ LossMap = {
     "BCEWithLogitLoss": nn.BCEWithLogitsLoss(reduction="mean"),
     "CrossEntropyLoss": nn.CrossEntropyLoss(), #LogitNormLoss(),
     "TripletLoss": triplet_loss,
-    "Loss_Skd":loss_kd_self(),
-    "LogitNormLoss": LogitNormLoss(),
-    "Loss_Skd_Mse":mse_loss(),
-    "Loss_Skd_Cosine":cosine_loss(),
 }
 
-# contrastive loss function, adapted from
-# https://sachinruk.github.io/blog/pytorch/pytorch%20lightning/loss%20function/gpu/2021/03/07/CLIP.html
-def contrastive_loss(logits: torch.Tensor, masks) -> torch.Tensor:
-    b,l,_ = logits.size()
-    targets = torch.arange(l).to(logits.device)
-    targets = targets.repeat(b,1)
-    targets = torch.where(masks==0, torch.tensor(-100).to(logits.device), targets) #  where it is 0 put -100 otherwise current
-    return nn.functional.cross_entropy(logits, targets, ignore_index=-100)
-
-def clip_loss(similarity: torch.Tensor, masks) -> torch.Tensor:
-    image_loss = contrastive_loss(similarity, masks=masks)
-    caption_loss = contrastive_loss(torch.transpose(similarity,2,1), masks=masks)
-    return (caption_loss + image_loss) / 2.0
 
 
-
-def ForwardModelsVal_t_1(device, task_id, batch, model):
-    batch = tuple(t.cuda(device=device, non_blocking=True) for t in batch)
-    features, spatials, image_mask, question, target, input_mask, segment_ids, question_id, ixs , _ = batch
-    with torch.no_grad():
-        vil_prediction, _, _, _ = model(question, features, spatials, task_id,
-                                                                           segment_ids, input_mask, image_mask)
-    return vil_prediction
 
 
 def ForwardModelsVal(config, task_cfg, device, task_id, batch, model, criterion):
