@@ -9,7 +9,7 @@ We provide the code for reproducing our results and fine-tuned models.
 
 ## Repository Setup
 
-To set the environment to reproduce our results, see "Repository Setup" in the [VOLTA's README](volta/README.md).
+To set the environment, see "Repository Setup" in the [VOLTA's README](volta/README.md).
 
 
 ## Data
@@ -24,8 +24,15 @@ Features extraction steps for each of dataset and backbone can be found under [`
 
 ## Models
 
-The checkpoints of both pretrained V&L models (i.e. UC2 and M3P ) can be downloaded from [ERDA](https://sid.erda.dk/sharelink/b1Rge0DwwW).
+As a starting point, we use pretrained V&L models UC2 and M3P which can be downloaded from [ERDA](https://sid.erda.dk/sharelink/b1Rge0DwwW).
 
+To reproduce our [results](results), you can download the fine-tuned models from [model repository](https://pub.cl.uzh.ch/users/fnoora/fine-tuned-checkpoint/).
+
+- uc2.zip:</br>
+-`uc2_zero_shot_sft_cdm_seed256` contains the checkpoint for `with_prior+sft+cdm` strategy using UC2 model</br>
+- m3p.zip:</br>
+-`m3p_zero_shot_sft_cdm_seed0` contains the checkpoint for `with_prior+sft+cdm` strategy using M3P model</br>
+    
 Model configuration files are stored in [`volta/config/`](volta/config). 
 
 
@@ -43,6 +50,8 @@ Set `code_mixing: False` in [config_tasks/](config_tasks) for
     `iglue_trainval_tasks_X101.dtu.yml`
 
 ##### WordNet
+We extract the WordNet relations among the labels using [nltk](https://www.nltk.org/). You can find the code at [volta/extract_wn_rel.py](volta/extract_wn_rel.py)
+
 Download the `l2l_semantic_index.pkl` file from [semantic dict repository](https://pub.cl.uzh.ch/users/fnoora/semantic_dict/) 
 
 Set `semantic_dict_path: ../l2l_semantic_index.pkl` in [config_tasks/](config_tasks) for
@@ -51,7 +60,9 @@ Set `semantic_dict_path: ../l2l_semantic_index.pkl` in [config_tasks/](config_ta
 
 
 ##### Word Embeddings
-Download the `embedding_distance.pkl` file from [semantic dict repository](https://pub.cl.uzh.ch/users/fnoora/semantic_dict/) 
+We extract the word embeddings distance among the labels using [spaCy](https://spacy.io/). You can find the code at [volta/extract_embeddingdist.py](volta/extract_embeddingdist.py).</br>
+
+You can Download the `embedding_distance.pkl` file from [semantic dict repository](https://pub.cl.uzh.ch/users/fnoora/semantic_dict/) 
 
 Set `semantic_dict_path: ../embedding_distance.pkl` in [config_tasks/](config_tasks) for
     `iglue_trainval_tasks_boxes.dtu.yml` and
@@ -89,7 +100,6 @@ source train.dtu.sft.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_di
  ```
 
 ## Evaluation
-You can download the fine-tuned models from [model repository](https://pub.cl.uzh.ch/users/fnoora/fine-tuned-checkpoint/).
 
 ```bash 
 source test.dtu.sh  <path_to_directory_of_fine_tuned_model> <name_of_fine-tuned-model>
