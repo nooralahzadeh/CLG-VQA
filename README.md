@@ -26,7 +26,7 @@ Features extraction steps for each of dataset and backbone can be found under [`
 
 As a starting point, we use pretrained V&L models UC2 and M3P which can be downloaded from [ERDA](https://sid.erda.dk/sharelink/b1Rge0DwwW).
 
-To reproduce our [results](results), you can download the fine-tuned models from [model repository](https://pub.cl.uzh.ch/users/fnoora/fine-tuned-checkpoint/).
+To reproduce our [results](results), you can download the fine-tuned models from our [model repository](https://pub.cl.uzh.ch/users/fnoora/fine-tuned-checkpoint/).
 
 - uc2.zip:</br>
 -`uc2_zero_shot_sft_cdm_seed256` contains the checkpoint for `with_prior+sft+cdm` strategy using UC2 model</br>
@@ -108,7 +108,7 @@ source test.dtu.sh  <path_to_directory_of_fine_tuned_model> <name_of_fine-tuned-
 The result of our best models can be found in [results](results).
 
 ### Analysis
-The results in the `Further Analysis` section can be reproduced by [analysis.ipynb](volta/analysis.ipynb).
+The results in the `Further Analysis` section of the paper can be reproduced by [analysis.ipynb](volta/analysis.ipynb).
 ## License
 
 This work is licensed under the MIT license.
