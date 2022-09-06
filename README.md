@@ -50,7 +50,7 @@ Set `code_mixing: False` in [config_tasks/](config_tasks) for
     `iglue_trainval_tasks_X101.dtu.yml`
 
 ##### WordNet
-We extract the WordNet relations among the labels using [nltk](https://www.nltk.org/). You can find the code at [volta/extract_wn_rel.py](volta/extract_wn_rel.py)
+We extract the WordNet relations among the labels using [nltk](https://www.nltk.org/). You can find the code at [extract wordnet relation](volta/extract_wn_rel.py).
 
 Download the `l2l_semantic_index.pkl` file from [semantic dict repository](https://pub.cl.uzh.ch/users/fnoora/semantic_dict/) 
 
@@ -60,7 +60,7 @@ Set `semantic_dict_path: ../l2l_semantic_index.pkl` in [config_tasks/](config_ta
 
 
 ##### Word Embeddings
-We extract the word embeddings distance among the labels using [spaCy](https://spacy.io/). You can find the code at [volta/extract_embeddingdist.py](volta/extract_embeddingdist.py).</br>
+We extract the word embeddings distance among the labels using [spaCy](https://spacy.io/). You can find the code at [extract embedding distance](volta/extract_emb_dist.py).</br>
 
 You can Download the `embedding_distance.pkl` file from [semantic dict repository](https://pub.cl.uzh.ch/users/fnoora/semantic_dict/) 
 
@@ -106,6 +106,9 @@ source test.dtu.sh  <path_to_directory_of_fine_tuned_model> <name_of_fine-tuned-
 ```
 
 The result of our best models can be found in [results](results).
+
+### Analysis
+The results in the `Further Analysis` section can be reproduced by [analysis.ipynb](volta/analysis.ipynb).
 ## License
 
 This work is licensed under the MIT license.
