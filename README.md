@@ -47,26 +47,26 @@ Task configuration files are stored in [config_tasks/](volta/config_tasks).
 
 Set `code_mixing: False` in [config_tasks/](volta/config_tasks) for
     `iglue_trainval_tasks_boxes.dtu.yml` and 
-    `iglue_trainval_tasks_X101.dtu.yml`
+    `iglue_trainval_tasks_X101.dtu.yml`.
 
 ##### WordNet
 We extract the WordNet relations among the labels using [nltk](https://www.nltk.org/). You can find the code at [extract_wn_rel.py](volta/extract_wn_rel.py).
 
-Download the `l2l_semantic_index.pkl` file from [semantic dict repository](https://pub.cl.uzh.ch/users/fnoora/semantic_dict/) 
+Download the `l2l_semantic_index.pkl` file from [semantic dict repository](https://pub.cl.uzh.ch/users/fnoora/semantic_dict/).
 
 Set `semantic_dict_path: ../l2l_semantic_index.pkl` in [config_tasks/](volta/config_tasks) for
     `iglue_trainval_tasks_boxes.dtu.yml` and
-    `iglue_trainval_tasks_X101.dtu.yml`
+    `iglue_trainval_tasks_X101.dtu.yml`.
 
 
 ##### Word Embeddings
 We extract the word embeddings distance among the labels using [spaCy](https://spacy.io/). You can find the code at [extract_emb_dist.py](volta/extract_emb_dist.py).</br>
 
-You can Download the `embedding_distance.pkl` file from [semantic dict repository](https://pub.cl.uzh.ch/users/fnoora/semantic_dict/) 
+You can Download the `embedding_distance.pkl` file from [semantic dict repository](https://pub.cl.uzh.ch/users/fnoora/semantic_dict/).
 
 Set `semantic_dict_path: ../embedding_distance.pkl` in [config_tasks/](volta/config_tasks) for
     `iglue_trainval_tasks_boxes.dtu.yml` and
-    `iglue_trainval_tasks_X101.dtu.yml`
+    `iglue_trainval_tasks_X101.dtu.yml`.
 
 ```bash
 source train.dtu.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_directory_for_fine_tuned_model>
@@ -74,12 +74,12 @@ source train.dtu.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_direct
 ### Training With prior + CDM:
 Set `code_mixing: True` in [config_tasks/](volta/config_tasks) for
     `iglue_trainval_tasks_boxes.dtu.yml` and
-    `iglue_trainval_tasks_X101.dtu.yml`
+    `iglue_trainval_tasks_X101.dtu.yml`.
 
 ### Training With prior + SFT:
 Set `code_mixing: False` in [config_tasks/](volta/config_tasks) for 
         `iglue_trainval_tasks_boxes.dtu.yml` and 
-        `iglue_trainval_tasks_X101.dtu.yml`
+        `iglue_trainval_tasks_X101.dtu.yml`.
  - Step_0: pruning
 ```bash
 source train.dtu.pruned.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_directory_for_pruned_model>
