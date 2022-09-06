@@ -50,7 +50,7 @@ Set `code_mixing: False` in [config_tasks/](volta/config_tasks) for
     `iglue_trainval_tasks_X101.dtu.yml`
 
 ##### WordNet
-We extract the WordNet relations among the labels using [nltk](https://www.nltk.org/). You can find the code at [extract wordnet relation](volta/extract_wn_rel.py).
+We extract the WordNet relations among the labels using [nltk](https://www.nltk.org/). You can find the code at [extract_wn_rel.py](volta/extract_wn_rel.py).
 
 Download the `l2l_semantic_index.pkl` file from [semantic dict repository](https://pub.cl.uzh.ch/users/fnoora/semantic_dict/) 
 
@@ -60,7 +60,7 @@ Set `semantic_dict_path: ../l2l_semantic_index.pkl` in [config_tasks/](volta/con
 
 
 ##### Word Embeddings
-We extract the word embeddings distance among the labels using [spaCy](https://spacy.io/). You can find the code at [extract embedding distance](volta/extract_emb_dist.py).</br>
+We extract the word embeddings distance among the labels using [spaCy](https://spacy.io/). You can find the code at [extract_emb_dist.py](volta/extract_emb_dist.py).</br>
 
 You can Download the `embedding_distance.pkl` file from [semantic dict repository](https://pub.cl.uzh.ch/users/fnoora/semantic_dict/) 
 
