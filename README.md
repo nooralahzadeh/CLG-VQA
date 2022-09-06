@@ -17,7 +17,7 @@ Following the [IGLUE](https://github.com/e-bug/iglue) repository:
 
 [`datasets/`](datasets) contains the textual data for Visual Question Answering task (i.e. GQA amd xGQA).
 
-Check out its [README](datasets/README.md) for links to preprocessed data  
+Check out its [README](datasets/README.md) for links to preprocessed data. 
 
 Features extraction steps for each of dataset and backbone can be found under [`features_extraction/`](features_extraction). 
 
@@ -29,9 +29,9 @@ As a starting point, we use pretrained V&L models UC2 and M3P which can be downl
 To reproduce our [results](results), you can download the fine-tuned models from our [model repository](https://pub.cl.uzh.ch/users/fnoora/fine-tuned-checkpoint/).
 
 - uc2.zip:</br>
--`uc2_zero_shot_sft_cdm_seed256` contains the checkpoint for `with_prior+sft+cdm` strategy using UC2 model</br>
+-`uc2_zero_shot_sft_cdm_seed256` contains the checkpoint for `with_prior+sft+cdm` strategy using UC2 model.</br>
 - m3p.zip:</br>
--`m3p_zero_shot_sft_cdm_seed0` contains the checkpoint for `with_prior+sft+cdm` strategy using M3P model</br>
+-`m3p_zero_shot_sft_cdm_seed0` contains the checkpoint for `with_prior+sft+cdm` strategy using M3P model.</br>
     
 Model configuration files are stored in [`volta/config/`](volta/config). 
 
@@ -39,7 +39,7 @@ Model configuration files are stored in [`volta/config/`](volta/config).
 ## Training
 
 We provide the scripts we used to train and evaluate models in [`experiments/`](experiments):
-- [`zero_shot/`](experiments/zero_shot): English fine-tuning and zero-shot/`translate test' evaluation
+- [`zero_shot/`](experiments/zero_shot): English fine-tuning and zero-shot/`translate test' evaluation.
 
 Task configuration files are stored in [config_tasks/](volta/config_tasks).
 
@@ -71,6 +71,7 @@ Set `semantic_dict_path: ../embedding_distance.pkl` in [config_tasks/](volta/con
 ```bash
 source train.dtu.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_directory_for_fine_tuned_model>
 ```
+
 ### Training With prior + CDM:
 Set `code_mixing: True` in [config_tasks/](volta/config_tasks) for
     `iglue_trainval_tasks_boxes.dtu.yml` and
@@ -89,7 +90,7 @@ source train.dtu.pruned.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to
 source train.dtu.sft.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_directory_of_pruned_model> <path_to_directory_for_fine_tuned_model> 
 ```
 ### Training With prior + SFT + CDM:
-Set `code_mixing: True` in [config_tasks/](volta/config_tasks) --> `iglue_trainval_tasks_boxes.dtu.yml` and  `iglue_trainval_tasks_X101.dtu.yml`
+Set `code_mixing: True` in [config_tasks/](volta/config_tasks) --> `iglue_trainval_tasks_boxes.dtu.yml` and  `iglue_trainval_tasks_X101.dtu.yml`.
 * Step_0: pruning
 ```bash
 source train.dtu.pruned.sh 0 <path_to_directory_of_pretrained_vl_model> <path_to_directory_for_pruned_model>
