@@ -121,8 +121,7 @@ If you find this repository useful in your work, you can cite the following pape
 ```
 @article{nooralahzadeh-sennrich-2022,
     title = "Improving the Cross-Lingual Generalisation in Visual Question Answering",
-    author = "Nooralahzadeh, Farhad  and
-      Sennrich, Rico",
+    author = "Nooralahzadeh, Farhad  and Sennrich, Rico",
     journal = "arXiv preprint arXiv:2209.02982"
     year = "2022",
     url = "https://arxiv.org/abs/2209.02982",
