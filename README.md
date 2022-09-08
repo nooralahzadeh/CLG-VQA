@@ -1,6 +1,6 @@
 
 This is the implementation of the approaches described in the paper:
-> Farhad Nooralahzadeh and Rico Sennrich [Improving the Cross-Lingual Generalisation in Visual Question Answering](https://arxiv.org/abs/). arXiv 2022; abs/.
+> Farhad Nooralahzadeh and Rico Sennrich [Improving the Cross-Lingual Generalisation in Visual Question Answering](https://arxiv.org/abs/2209.02982). arXiv 2022; abs/2209.02982.
 
 Our repository is based on [IGLUE](https://github.com/e-bug/iglue) and [VOLTA](https://github.com/e-bug/volta). We thank the authors for their wonderful open-source efforts.</br>
 For sparse fine-tuning (SFT), we adopt the codebase of [BERT-Tickets](https://github.com/VITA-Group/BERT-Tickets) for our purpose.</br>
@@ -122,9 +122,9 @@ If you find this repository useful in your work, you can cite the following pape
 @article{nooralahzadeh-sennrich-2022,
     title = "Improving the Cross-Lingual Generalisation in Visual Question Answering",
     author = "Nooralahzadeh, Farhad  and
-      Sennrich, Rico",,
-    journal = "arXiv preprint ...."
+      Sennrich, Rico",
+    journal = "arXiv preprint arXiv:2209.02982"
     year = "2022",
-    url = "https://arxiv.org/abs/...",
+    url = "https://arxiv.org/abs/2209.02982",
 }
 ```
