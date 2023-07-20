@@ -119,11 +119,16 @@ Third-party software and data are subject to their respective licenses. <br>
 If you find this repository useful in your work, you can cite the following paper:
 
 ```
-@article{nooralahzadeh-sennrich-2022,
-    title = "Improving the Cross-Lingual Generalisation in Visual Question Answering",
-    author = "Nooralahzadeh, Farhad  and Sennrich, Rico",
-    journal = "arXiv preprint arXiv:2209.02982"
-    year = "2022",
-    url = "https://arxiv.org/abs/2209.02982",
+@article{Nooralahzadeh_Sennrich_2023,
+  title={Improving the Cross-Lingual Generalisation in Visual Question Answering},
+  volume={37},
+  url={https://ojs.aaai.org/index.php/AAAI/article/view/26574},
+  DOI={10.1609/aaai.v37i11.26574},
+  number={11},
+  journal={Proceedings of the AAAI Conference on Artificial Intelligence},
+  author={Nooralahzadeh, Farhad and Sennrich, Rico},
+  year={2023},
+  month={Jun.},
+  pages={13419-13427} 
 }
 ```
